@@ -39,6 +39,10 @@ app.use("/api/proctor", require("./routes/proctorRoutes"));
 app.use('/api/result', require('./routes/resultRoutes'));
 app.use('/api/file', fileRoutes);
 app.use('/api/document', documentRoutes);
+app.use(cors({
+  origin: "*", // OR put frontend URL here for better security
+  credentials: true
+}));
 
 // Health check
 app.get("/", (_, res) => res.send("Server running ✅"));

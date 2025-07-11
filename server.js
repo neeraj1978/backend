@@ -27,7 +27,7 @@ const io = new Server(server, { cors: { origin: "*" } });
 global.io = io; // For proctoring sockets
 
 app.use(cors({
-  origin: "https://frontend2134.onrender.com"
+  origin: "https://frontend2134.onrender.com",
   credentials: true
 }));
 app.use(express.json());

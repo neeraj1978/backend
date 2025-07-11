@@ -26,7 +26,10 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 global.io = io; // For proctoring sockets
 
-app.use(cors());
+app.use(cors({
+  origin: "https://frontend2134.onrender.com"
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
@@ -39,10 +42,7 @@ app.use("/api/proctor", require("./routes/proctorRoutes"));
 app.use('/api/result', require('./routes/resultRoutes'));
 app.use('/api/file', fileRoutes);
 app.use('/api/document', documentRoutes);
-app.use(cors({
-  origin: "*", // OR put frontend URL here for better security
-  credentials: true
-}));
+
 
 // Health check
 app.get("/", (_, res) => res.send("Server running ✅"));
